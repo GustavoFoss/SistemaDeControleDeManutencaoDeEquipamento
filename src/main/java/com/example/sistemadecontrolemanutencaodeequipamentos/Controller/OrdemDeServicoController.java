@@ -30,13 +30,18 @@ public class OrdemDeServicoController {
         return ordemDeServicoService.buscarOrdemDeServicoPorId(id);
     }
 
-    @PutMapping("/iniciar/{id}")
-    public OrdemDeServico iniciarServico(@PathVariable Long id) {
+    @PostMapping("/iniciar/{id}")
+    public OrdemDeServicoDto iniciarServico(@PathVariable Long id) {
         return ordemDeServicoService.iniciarServico(id);
     }
 
-    @PutMapping("/finalizar/{id}")
-    public OrdemDeServico finalizarServico(@PathVariable Long id, @RequestBody String detalhesServico) {
+    @PostMapping("/finalizar/{id}")
+    public OrdemDeServicoDto finalizarServico(@PathVariable Long id, @RequestBody String detalhesServico) {
         return ordemDeServicoService.finalizarServico(id, detalhesServico);
+    }
+
+    @PostMapping("/acompanhamento/{id}")
+    public OrdemDeServicoDto atualizarAcompanhamento(@PathVariable Long id, @RequestBody String descricao) {
+        return ordemDeServicoService.atualizarAcompanhamento(id, descricao);
     }
 }

@@ -47,19 +47,27 @@ public class OrdemDeServicoService {
 
     }
 
-    public OrdemDeServico iniciarServico(Long ordemId) {
-        OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElseThrow();
+    public OrdemDeServicoDto iniciarServico(Long ordemId) {
+        OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
         ordem.setDataInicio(LocalDateTime.now());
         ordem.setStatus("Em Andamento");
-        return ordemDeServicoRepository.save(ordem);
+        return convertToDTO(ordemDeServicoRepository.save(ordem));
     }
 
-    public OrdemDeServico finalizarServico(Long ordemId, String detalhesServico) {
-        OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElseThrow();
+    public OrdemDeServicoDto finalizarServico(Long ordemId, String detalhesServico) {
+        OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
         ordem.setDataFim(LocalDateTime.now());
         ordem.setDetalhesServico(detalhesServico);
         ordem.setStatus("Finalizado");
-        return ordemDeServicoRepository.save(ordem);
+        return convertToDTO(ordemDeServicoRepository.save(ordem));
+    }
+
+    public OrdemDeServicoDto atualizarAcompanhamento(Long ordemId, String descricao) {
+        OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
+        ordem.setDataFim(LocalDateTime.now());
+        ordem.setAcompanhamento(descricao);
+        ordem.setStatus("Em Andamento");
+        return convertToDTO(ordemDeServicoRepository.save(ordem));
     }
 
     private OrdemDeServicoDto convertToDTO(OrdemDeServico ordem) {

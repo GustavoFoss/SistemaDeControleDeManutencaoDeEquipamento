@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Manutenção de Equipamentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Controle de Manutenção de Equipamentos</h1>
+
+<section>
+    <h2>Registrar Ordem de Serviço</h2>
+    <form id="orderForm">
+        <h3>Dados do Cliente</h3>
+        <input type="text" id="clienteNome" placeholder="Nome do Cliente" required>
+        <input type="text" id="clienteEndereco" placeholder="Endereço do Cliente" required>
+        <input type="tel" id="clienteTelefone" placeholder="Telefone do Cliente" required>
+        <input type="email" id="clienteEmail" placeholder="Email do Cliente" required>
+
+        <h3>Dados do Equipamento</h3>
+        <input type="text" id="equipamentoTipo" placeholder="Tipo de Equipamento" required>
+        <input type="text" id="equipamentoMarca" placeholder="Marca do Equipamento" required>
+        <input type="text" id="equipamentoProblema" placeholder="Problema" required>
+
+        <button type="submit">Registrar</button>
+    </form>
+</section>
+
+<section>
+    <h2>Ordens de Serviço</h2>
+    <ul id="ordensPendentes"></ul>
+</section>
+
+<section id="ordemDetalhesSection" style="display: none;">
+    <h2>Detalhes da Ordem de Serviço</h2>
+    <div id="ordemDetalhes"></div>
+    <form id="inicioServicoForm">
+        <button type="button" id="iniciarServico">Iniciar Serviço</button>
+    </form>
+    <form id="encerrarServicoForm">
+        <input type="text" id="descricaoServico" placeholder="Descrição do Serviço" required>
+        <button type="submit">Encerrar Serviço</button>
+    </form>
+</section>
+
+<script src="scripts.js"></script>
+</body>
+</html>

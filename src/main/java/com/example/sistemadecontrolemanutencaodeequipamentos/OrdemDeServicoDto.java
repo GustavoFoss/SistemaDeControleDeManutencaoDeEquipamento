@@ -1,22 +1,13 @@
-package com.example.sistemadecontrolemanutencaodeequipamentos.Entities;
+package com.example.sistemadecontrolemanutencaodeequipamentos;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
+import com.example.sistemadecontrolemanutencaodeequipamentos.Entities.Cliente;
+import com.example.sistemadecontrolemanutencaodeequipamentos.Entities.Equipamento;
 import java.time.LocalDateTime;
 
-import static jakarta.persistence.GenerationType.*;
+public class OrdemDeServicoDto {
 
-@Entity
-@Data
-public class OrdemDeServico {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    @ManyToOne
     private Cliente cliente;
-    @ManyToOne
     private Equipamento equipamento;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataInicio;

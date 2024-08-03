@@ -66,7 +66,7 @@ public class OrdemDeServicoService {
         OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
         ordem.setDataFim(LocalDateTime.now());
         ordem.setAcompanhamento(descricao);
-        ordem.setStatus("Em Andamento");
+        ordem.setStatus("Em Espera");
         return convertToDTO(ordemDeServicoRepository.save(ordem));
     }
 
@@ -80,6 +80,7 @@ public class OrdemDeServicoService {
         dto.setDataInicio(ordem.getDataInicio());
         dto.setStatus(ordem.getStatus());
         dto.setDetalhesServico(ordem.getDetalhesServico());
+        dto.setAcompanhamento(ordem.getAcompanhamento());
         return dto;
     }
 }

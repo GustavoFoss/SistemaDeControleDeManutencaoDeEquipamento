@@ -1,3 +1,5 @@
+let currentOrderId = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
     const orderForm = document.getElementById('orderForm');
     const ordensPendentes = document.getElementById('ordensPendentes');
@@ -6,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const inicioServicoForm = document.getElementById('inicioServicoForm');
     const encerrarServicoForm = document.getElementById('encerrarServicoForm');
     const acompanhamentoServicoForm = document.getElementById('acompanhamentoServicoForm');
-    let currentOrderId = null;
 
     orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -59,6 +60,12 @@ async function showOrderDetails(orderId) {
     try {
         const response = await fetch(`http://localhost:8080/ordens/${orderId}`);
         const ordem = await response.json();
+
+        if (orderId === currentOrderId) {
+            ordemDetalhesSection.style.display = 'none'
+            currentOrderId = 0
+            return
+        }
 
         ordemDetalhes.innerHTML = `
         
@@ -117,7 +124,7 @@ async function encerrarServico() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ descricao }),
+            body: descricao,
         });
 
         if (response.ok) {
@@ -145,7 +152,7 @@ async function atualizarAcompanhamento() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ descricao }),
+            body: descricao,
         });
 
         if (response.ok) {
@@ -181,6 +188,7 @@ async function fetchOrdensPendentes() {
     }
 
     inicioServicoForm.addEventListener('submit', iniciarServico);
-
-
 }
+
+encerrarServicoForm.addEventListener('submit', encerrarServico);
+acompanhamentoServicoForm.addEventListener('submit', atualizarAcompanhamento);

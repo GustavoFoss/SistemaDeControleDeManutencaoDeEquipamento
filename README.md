@@ -3,7 +3,7 @@ Para essa atividade foi utilizado Java no backend juntamente com Spring/SpringBo
 Como front end desenvolvi em Html,Css e Js, apenas sendo preciso que clique no arquivo Html e abra no navegador para poder utilizalo
 Para rodar a aplicação
 
-1 - Recomendado utilizar o Intelij IDEA na versão de 2024
+1 - Recomendado utilizar o Intelij IDEA na versão de 2024, Java versão 17 com sdk 22
 
 2 - Para as dependencias foi utilizado o Graddle onde que com Intelij ao tentar rodar a aplicaçào ele ja da build no arquivo automaticamente mas pode ser que vc tenha que buildar manualmente
 

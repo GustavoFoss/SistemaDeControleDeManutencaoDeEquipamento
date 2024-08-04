@@ -76,7 +76,7 @@ async function showOrderDetails(orderId) {
         <p><strong>Email:</strong> ${ordem.cliente.email}</p>
         <p><strong>Equipamento:</strong> ${ordem.equipamento.tipo} (${ordem.equipamento.marca})</p>
         <p><strong>Detalhes Servico:</strong> ${ordem.detalhesServico}</p>
-        <p><strong>Acompanhamento:</strong> ${ordem.acompanhamento}</p>
+        <p><strong>Acompanhamento:</strong> ${ordem.acompanhamento !== null ? ordem.acompanhamento : ""}</p>
         
       `;
 

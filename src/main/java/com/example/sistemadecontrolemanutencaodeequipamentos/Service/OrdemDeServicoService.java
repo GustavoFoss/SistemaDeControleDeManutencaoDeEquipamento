@@ -50,6 +50,7 @@ public class OrdemDeServicoService {
     public OrdemDeServicoDto iniciarServico(Long ordemId) {
         OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
         ordem.setDataInicio(LocalDateTime.now());
+        ordem.setAcompanhamento("");
         ordem.setStatus("Em Andamento");
         return convertToDTO(ordemDeServicoRepository.save(ordem));
     }
@@ -58,6 +59,7 @@ public class OrdemDeServicoService {
         OrdemDeServico ordem = ordemDeServicoRepository.findById(ordemId).orElse(null);
         ordem.setDataFim(LocalDateTime.now());
         ordem.setDetalhesServico(detalhesServico);
+        ordem.setAcompanhamento("");
         ordem.setStatus("Finalizado");
         return convertToDTO(ordemDeServicoRepository.save(ordem));
     }
